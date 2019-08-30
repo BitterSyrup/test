@@ -15,7 +15,7 @@ node {
     stage "Build"
     
         sh "docker build -t ${imageName} ."
- 	sh "cat k8s/deployment.yaml <<EOL
+ 	sh "cat > k8s/deployment.yaml << EOL
 	apiVersion: v1
 kind: Service
 metadata:
