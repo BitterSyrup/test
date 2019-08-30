@@ -15,44 +15,44 @@ node {
     stage "Build"
     
         sh "docker build -t ${imageName} ."
- 	sh "cat > k8s/deployment.yaml << EOL \
-	apiVersion: v1 \
-kind: Service \
-metadata: \
-  name: hello-nam \
-  labels: \
-    app: hello-nam \
-spec: \
-  ports: \
-    - port: 80 \
-      targetPort: 80 \
-  selector: \
-    app: hello-nam \
+ 	sh "cat > k8s/deployment.yaml << 'EOL' 
+	apiVersion: v1 
+kind: Service 
+metadata: 
+  name: hello-nam 
+  labels:
+    app: hello-nam
+spec:
+  ports: 
+    - port: 80 
+      targetPort: 80
+  selector: 
+    app: hello-nam 
     tier: hello-nam 
-  type: NodePort \
-\
---- \
-apiVersion: apps/v1beta1 \
-kind: Deployment \
-metadata: \
-  name: hello-nam \
-  labels: \
-    app: hello-nam \
-spec: \
-  strategy: \
-    type: Recreate \
-  template: \
-    metadata: \
-      labels: \
-        app: hello-nam \
-        tier: hello-nam \
-    spec: \
-      containers: \
-      - image: 10.9.2.151:5000/hello-nam:20a4a68 \
-        name: hello-nam \
-        ports: \
-        - containerPort: 80 \
-          name: hello-nam \
+  type: NodePort 
+
+--- 
+apiVersion: apps/v1beta1 
+kind: Deployment 
+metadata: 
+  name: hello-nam 
+  labels: 
+    app: hello-nam 
+spec: 
+  strategy: 
+    type: Recreate 
+  template: 
+    metadata: 
+      labels: 
+        app: hello-nam 
+        tier: hello-nam 
+    spec: 
+      containers: 
+      - image: 10.9.2.151:5000/hello-nam:20a4a68 
+        name: hello-nam 
+        ports: 
+        - containerPort: 80 
+          name: hello-nam 
 EOL"
 
     stage "Push"
