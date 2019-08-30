@@ -15,44 +15,44 @@ node {
     stage "Build"
     
         sh "docker build -t ${imageName} ."
- 	sh "cat > k8s/deployment.yaml << EOL
-	apiVersion: v1
-kind: Service
-metadata:
-  name: hello-nam
-  labels:
-    app: hello-nam
-spec:
-  ports:
-    - port: 80
-      targetPort: 80
-  selector:
-    app: hello-nam
-    tier: hello-nam
-  type: NodePort
-
----
-apiVersion: apps/v1beta1
-kind: Deployment
-metadata:
-  name: hello-nam
-  labels:
-    app: hello-nam
-spec:
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        app: hello-nam
-        tier: hello-nam
-    spec:
-      containers:
-      - image: 10.9.2.151:5000/hello-nam:20a4a68
-        name: hello-nam
-        ports:
-        - containerPort: 80
-          name: hello-nam
+ 	sh "cat > k8s/deployment.yaml << EOL \n
+	apiVersion: v1 \n
+kind: Service \n
+metadata: \n
+  name: hello-nam \n
+  labels: \n
+    app: hello-nam \n
+spec: \n
+  ports: \n
+    - port: 80 \n
+      targetPort: 80 \n
+  selector: \n
+    app: hello-nam \n
+    tier: hello-nam \n
+  type: NodePort \n
+\n
+--- \n
+apiVersion: apps/v1beta1 \n
+kind: Deployment \n
+metadata: \n
+  name: hello-nam \n
+  labels: \n
+    app: hello-nam \n
+spec: \n
+  strategy: \n
+    type: Recreate \n
+  template: \n
+    metadata: \n
+      labels: \n
+        app: hello-nam \n
+        tier: hello-nam \n
+    spec: \n
+      containers: \n
+      - image: 10.9.2.151:5000/hello-nam:20a4a68 \n
+        name: hello-nam \n
+        ports: \n
+        - containerPort: 80 \n
+          name: hello-nam \n
 EOL"
 
     stage "Push"
