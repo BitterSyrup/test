@@ -12,7 +12,7 @@ node {
     imageName = "${registryHost}${appName}:${tag}"
     env.BUILDIMG=imageName
     //dir = pwd()
-    tok = readFile(Token)
+    tok = readFile('Token')
 	
     stage "Build"
     
