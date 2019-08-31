@@ -30,10 +30,9 @@ spec:
         tier: hello-nam
     spec:
       containers:
-      - image: 10.9.2.151:5000/hello-nam:942f094
+      - image: 10.9.2.151:5000/ID
         name: hello-nam
         ports:
         - containerPort: 80
           name: hello-nam
-      imagePullSecrets:
-      - name: deployment-account-token-qj7k6       
+          
