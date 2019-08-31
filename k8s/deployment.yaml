@@ -30,7 +30,7 @@ spec:
         tier: hello-nam
     spec:
       containers:
-      - image: 
+      - image: IMAGE
         name: hello-nam
         ports:
         - containerPort: 80
