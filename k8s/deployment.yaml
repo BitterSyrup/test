@@ -21,7 +21,6 @@ metadata:
   labels:
     app: hello-nam
 spec:
-  serviceAccountName: deployment-account-token-qj7k6
   strategy:
     type: Recreate
   template:
@@ -36,3 +35,5 @@ spec:
         ports:
         - containerPort: 80
           name: hello-nam
+      imagePullSecrets:
+      - name: deployment-account-token-qj7k6       
