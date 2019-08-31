@@ -15,7 +15,7 @@ node {
     stage "Build"
     
         sh "docker build -t ${imageName} ."
-	sh "sed 's/ID/${appName}:${tag}/' k8s/deployment.yaml"
+	sh "sed 's/ID/${appName}:${tag}/'  ${PWD}/k8s/deployment.yaml"
 
     stage "Push"
 
