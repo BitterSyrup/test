@@ -49,7 +49,7 @@ spec:
         tier: hello-nam
     spec:
       containers:
-      - image: imageName
+      - image: "${imageName}"
         name: hello-nam
         ports:
         - containerPort: 80
