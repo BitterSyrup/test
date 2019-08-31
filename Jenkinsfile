@@ -13,7 +13,7 @@ node {
     env.BUILDIMG=imageName
     //dir = pwd()
     tok = readFile('Token').replace("\n", "").replace("\r", "")
-	
+    a = readFile('k8s/123')	
     stage "Build"
     
         sh "docker build -t ${imageName} ."
