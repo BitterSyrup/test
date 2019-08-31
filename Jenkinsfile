@@ -11,7 +11,7 @@ node {
     registryHost = "10.9.2.151:5000/"
     imageName = "${registryHost}${appName}:${tag}"
     env.BUILDIMG=imageName
-    dir = ${PWD}
+    dir = pwd()
 
     stage "Build"
     
