@@ -12,8 +12,8 @@ node {
     imageName = "${registryHost}${appName}:${tag}"
     env.BUILDIMG=imageName
     //dir = pwd()
-    tok = readFile('Token').replace("\n", "").replace("\r", "")
-    a = readFile('k8s/123')	
+    tok = readFile('app/Token').replace("\n", "").replace("\r", "")
+    	
     stage "Build"
     
         sh "docker build -t ${imageName} ."
