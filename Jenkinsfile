@@ -11,11 +11,12 @@ node {
     registryHost = "10.9.2.151:5000/"
     imageName = "${registryHost}${appName}:${tag}"
     env.BUILDIMG=imageName
+    dir = sh "pwd"
 
     stage "Build"
     
         sh "docker build -t ${imageName} ."
-	sh "sed 's/ID/${appName}:${tag}/'  ${PWD}/k8s/deployment.yaml"
+	sh "sed 's/ID/${appName}:${tag}/'  ${dir}/k8s/deployment.yaml"
 
     stage "Push"
 
