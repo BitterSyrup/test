@@ -9,8 +9,8 @@ spec:
     - port: 80
       targetPort: 80
   selector:
-    app: hello-nam
-    tier: hello-nam
+      app: hello-nam
+      tier: hello-nam
   type: NodePort
 
 ---
