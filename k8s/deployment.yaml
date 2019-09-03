@@ -1,4 +1,4 @@
-apiVersion: "3"
+apiVersion: "v3"
 kind: Service
 metadata:
   name: hello-nam
