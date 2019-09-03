@@ -26,7 +26,8 @@ node {
 
 	kubernetesDeploy(
                                 credentialsType: 'KubeConfig',
-                                kubeConfig: [path: '/var/lib/jenkins/workspace/.kube/config']
+                                kubeConfig: [path: '/var/lib/jenkins/workspace/.kube/config'],
+				configs: 'k8s/deployment.yaml',
                                 
                                 )
 	
