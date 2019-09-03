@@ -30,7 +30,7 @@ spec:
         tier: hello-nam
     spec:
       containers:
-      - image: 10.9.2.xxx/hahah
+      - image: 10.9.2.151:5000/ID
         name: hello-nam
         ports:
         - containerPort: 80
