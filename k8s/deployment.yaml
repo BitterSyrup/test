@@ -1,4 +1,4 @@
-apiVersion: extension/v1beta1
+apiVersion: v1beta
 kind: Service
 metadata:
   name: hello-nam
@@ -14,7 +14,7 @@ spec:
   type: NodePort
 
 ---
-apiVersion: extension/v1beta1
+apiVersion: apps/v1beta
 kind: Deployment
 metadata:
   name: hello-nam
