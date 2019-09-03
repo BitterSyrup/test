@@ -24,7 +24,7 @@ node {
 
     stage "Deploy"
 
-	kubernetesDeploy configs: "k8s/*.yaml", kubeconfigId: 'kube_config', path: '/var/lib/jenkins/workspace/.kube/config'
+	kubernetesDeploy configs: kubeconfigId: 'kube_config', path: '/var/lib/jenkins/workspace/.kube/config'
 	
 	sh "sed -i 's/ID/${appName}:${tag}/'  k8s/deployment.yaml"
 	
