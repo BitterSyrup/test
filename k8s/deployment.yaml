@@ -9,8 +9,8 @@ spec:
     - port: 80
       targetPort: 80
   selector:
-      app: hello-nam
-      tier: hello-nam
+    app: hello-nam
+    tier: hello-nam
   type: NodePort
 
 ---
@@ -30,9 +30,8 @@ spec:
         tier: hello-nam
     spec:
       containers:
-      - image: 10.9.2.151:5000/ID
+      - image: 10.9.2.xxx/hahah
         name: hello-nam
         ports:
         - containerPort: 80
           name: hello-nam
-          
