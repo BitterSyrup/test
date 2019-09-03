@@ -26,8 +26,8 @@ node {
 
 	/*kubernetesDeploy(
                                 credentialsType: 'KubeConfig',
-                                kubeConfig: [path: '/var/lib/jenkins/workspace/.kube/config'],
-                                configs: 'k8s/deployment.yaml', 
+                                kubeConfig: [path: '/var/lib/jenkins/workspace/.kube/config']
+                                
                                 )*/
 	
 	sh "sed -i 's/ID/${appName}:${tag}/'  k8s/deployment.yaml"
