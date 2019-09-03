@@ -12,7 +12,7 @@ node {
     imageName = "${registryHost}${appName}:${tag}"
     env.BUILDIMG=imageName
     //dir = pwd()
-    tok = readFile('app/Token').replace("\n", "").replace("\r", "")
+    //tok = readFile('app/Token').replace("\n", "").replace("\r", "")
     	
     stage "Build"
     
@@ -25,8 +25,11 @@ node {
     stage "Deploy"
 	
 	sh "sed -i 's/ID/${appName}:${tag}/'  k8s/deployment.yaml"
-
-    	sh "kubectl --insecure-skip-tls-verify --server=https://10.9.2.151:6443 --token=${tok} apply -f k8s/deployment.yaml" 
 	
-	sh "sed -i 's/${appName}:${tag}/ID/'  k8s/deployment.yaml"
+	kubeConfig: [path: '/var/lib/jenkins/workspace/.kube/config']
+
+	kubectl deploy -f k8s/deployment.yaml
+
+    	//sh "kubectl --insecure-skip-tls-verify --server=https://10.9.2.151:6443 --token=${tok} apply -f k8s/deployment.yaml" 
+		
 }
