@@ -28,7 +28,7 @@ node {
 	
 	kubeConfig: [path: '/var/lib/jenkins/workspace/.kube/config']
 
-	kubectl deploy -f k8s/deployment.yaml
+	sh "kubectl deploy -f k8s/deployment.yaml"
 
     	//sh "kubectl --insecure-skip-tls-verify --server=https://10.9.2.151:6443 --token=${tok} apply -f k8s/deployment.yaml" 
 		
