@@ -23,11 +23,11 @@ node {
         sh "docker push ${imageName}"
 
     stage "Deploy"
+
+	kubernetesDeploy configs: "k8s/*.yaml", kubeconfigId: 'kube_config', path: '/var/lib/jenkins/workspace/.kube/config'
 	
 	sh "sed -i 's/ID/${appName}:${tag}/'  k8s/deployment.yaml"
 	
-	kubeConfig: [path: '/var/lib/jenkins/workspace/.kube/config']
-
 	sh "kubectl apply -f k8s/deployment.yaml"
 
     	//sh "kubectl --insecure-skip-tls-verify --server=https://10.9.2.151:6443 --token=${tok} apply -f k8s/deployment.yaml" 
