@@ -26,15 +26,15 @@ node {
 
 	sh "sed -i 's/ID/${appName}:${tag}/'  k8s/deployment.yaml"	
 
-	kubernetesDeploy(
+	/*kubernetesDeploy(
                                 credentialsType: 'KubeConfig',
                                 kubeConfig: [path: '/var/lib/jenkins/workspace/.kube/config'],
 				configs: 'k8s/deployment.yaml',
                                 
-                                )
+                                )*/
 		
-	sh "kubectl apply -f k8s/deployment.yaml"
+	//sh "kubectl apply -f k8s/deployment.yaml"
 
-    	//sh "kubectl --insecure-skip-tls-verify --server=https://10.9.2.151:6443 --token=${tok} apply -f k8s/deployment.yaml" 
+    	sh "kubectl --insecure-skip-tls-verify --server=https://10.9.2.151:6443 --token=${token_kube} apply -f k8s/deployment.yaml" 
 		
 }
